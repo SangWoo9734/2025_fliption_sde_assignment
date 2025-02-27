@@ -1,0 +1,59 @@
+{
+  "projects": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "userId": "user-001",
+      "title": "new swap",
+      "sourceImageUrl": "/images/user1.jpg",
+      "targetImageUrl": "/images/style3.png",
+      "resultImageUrl": "/images/result3.png",
+      "status": "done",
+      "createdAt": "2025-02-22T10:00:00Z",
+      "updatedAt": "2025-02-22T10:00:00Z"
+    },
+    {
+      "id": "f032418d-6044-4925-b0b1-18d0ec5faab5",
+      "userId": "user123",
+      "title": "New Project - 1740649472633",
+      "sourceImageUrl": "/images/user1.jpg",
+      "targetImageUrl": "/images/style3.png",
+      "resultImageUrl": "/images/result3.png",
+      "status": "processing",
+      "createdAt": "2025-02-27T09:44:32.633Z",
+      "updatedAt": "2025-02-27T09:44:32.633Z"
+    },
+    {
+      "id": "41c6194a-c373-4150-af67-e1b45548581c",
+      "userId": "user123",
+      "title": "New Project - 1740650017933",
+      "sourceImageUrl": "/images/user1.jpg",
+      "targetImageUrl": "/images/style3.png",
+      "resultImageUrl": "/images/result3.png",
+      "status": "waiting",
+      "createdAt": "2025-02-27T09:53:37.933Z",
+      "updatedAt": "2025-02-27T09:53:37.933Z"
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": "5efb5aaf-50f7-4ae3-8648-cff789a68fc6",
+      "title": "new swap",
+      "category": "wrong-position",
+      "contents": "fadada",
+      "projectImageUrl": "http://localhost:3000/_next/image?url=%2Fimages%2Fresult3.png&w=256&q=75",
+      "userId": "user123",
+      "createdAt": "2025-02-27T09:08:26.971Z",
+      "status": "Answering"
+    },
+    {
+      "id": "240022fa-1b85-497e-8c4d-a1bcd946f32d",
+      "title": "new swap",
+      "category": "lighting-mismatch",
+      "contents": "It's too bright",
+      "projectImageUrl": "http://localhost:3000/_next/image?url=%2Fimages%2Fresult3.png&w=256&q=75",
+      "userId": "user123",
+      "createdAt": "2025-02-27T09:13:16.962Z",
+      "status": "Answering"
+    }
+  ]
+}
