@@ -1,4 +1,4 @@
-import { StatusType } from '@/types/SwapType';
+import { StatusType } from '@/types/projectType';
 
 type ChipSizeEnum = 'sm' | 'md' | 'lg';
 

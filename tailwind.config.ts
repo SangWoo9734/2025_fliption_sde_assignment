@@ -25,6 +25,24 @@ export default {
         100: '#F5F5F5',
         50: '#FAFAFA',
       },
+      chips: {
+        wait: {
+          background: '#F8FFD5',
+          text: '#EF9B24',
+        },
+        processing: {
+          background: '#C4E1FF',
+          text: '#187EE4',
+        },
+        failed: {
+          background: '#FFE5E5',
+          text: '#FF3838',
+        },
+        done: {
+          background: '#D5FFE1',
+          text: '#1CC44F',
+        },
+      },
     },
   },
   plugins: [],
