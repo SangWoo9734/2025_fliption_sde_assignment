@@ -32,6 +32,17 @@
       "status": "waiting",
       "createdAt": "2025-02-27T09:53:37.933Z",
       "updatedAt": "2025-02-27T09:53:37.933Z"
+    },
+    {
+      "id": "c3763762-707a-4ee4-a8e2-10aa64250311",
+      "userId": "user123",
+      "title": "Project - 1740666622205",
+      "sourceImageUrl": "/images/user1.jpg",
+      "targetImageUrl": "/images/style3.png",
+      "resultImageUrl": "/images/result3.png",
+      "status": "failed",
+      "createdAt": "2025-02-27T14:30:22.205Z",
+      "updatedAt": "2025-02-27T14:30:22.205Z"
     }
   ],
   "feedbacks": [
