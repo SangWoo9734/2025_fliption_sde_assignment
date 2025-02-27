@@ -8,19 +8,33 @@ import DoneContent from '@/components/page/DirectoryPage/DoneContent';
 import FailedContent from '@/components/page/DirectoryPage/FailedCotnent';
 import ProcessingContent from '@/components/page/DirectoryPage/ProcessingContent';
 import WaitingContent from '@/components/page/DirectoryPage/WaitingContent';
+import useGetProject from '@/hooks/useGetProject';
 import modalStore from '@/store/modalStore';
-import { StatusType } from '@/types/SwapType';
+import { StatusType } from '@/types/projectType';
+import { useParams } from 'next/navigation';
 
 import { TbBubbleTextFilled } from 'react-icons/tb';
 import { useStore } from 'zustand';
 
 const ProjectPage = () => {
   const { openModal } = useStore(modalStore);
+  const params = useParams();
+  const { isLoading, isError, projectInfo } = useGetProject(
+    params.id as string
+  );
+
+  const { title, userId, createdAt, status, sourceImageUrl, resultImageUrl } =
+    projectInfo;
 
   const projectContent: Record<StatusType, React.ReactNode> = {
     waiting: <WaitingContent />,
     processing: <ProcessingContent />,
-    done: <DoneContent />,
+    done: (
+      <DoneContent
+        sourceImageUrl={sourceImageUrl}
+        resultImageUrl={resultImageUrl}
+      />
+    ),
     failed: <FailedContent />,
   };
 
@@ -30,17 +44,21 @@ const ProjectPage = () => {
     });
   };
 
+  if (isLoading) <div>Loading...</div>;
+
+  if (isError) <div> Error </div>;
+
   return (
     <ContentWrapper>
       <div className='flex justify-between items-start'>
         <div className='flex flex-col gap-2 mb-5'>
-          <div className='flex items-center gap-8'>
-            <h1 className='text-3xl'>title</h1>
-            <StatusChip status='failed' />
+          <div className='flex items-center gap-4'>
+            <h1 className='text-3xl'>{title}</h1>
+            <StatusChip status={status} />
           </div>
           <div className='flex gap-2.5 text-sm text-gray-500'>
-            <p>user-08</p>
-            <p>2025.02.11</p>
+            <p>{userId}</p>
+            <p>{new Date(createdAt).toDateString()}</p>
           </div>
         </div>
         <Button
@@ -52,7 +70,7 @@ const ProjectPage = () => {
         </Button>
       </div>
       <div className='flex-1 flex flex-col justify-center items-center gap-4 p-6 rounded-lg bg-gray-200'>
-        {projectContent['done']}
+        {projectContent[status]}
       </div>
     </ContentWrapper>
   );
