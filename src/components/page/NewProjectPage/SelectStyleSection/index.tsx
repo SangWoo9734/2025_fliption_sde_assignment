@@ -1,12 +1,28 @@
+import postProject from '@/apis/postProject';
 import Button from '@/components/common/Button';
+import { SERVICE_ROUTE } from '@/constants/routes';
 import uploadFormStore from '@/store/uploadFormStore';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
+import { useStore } from 'zustand';
 import StyleUnit from './StyleUnit';
 
 const SelectStyleSection = () => {
+  const { uploadFormData, resetState } = useStore(uploadFormStore);
   const isStyleIndexValid = uploadFormStore((state) => state.styleIndex !== 0);
 
+  const router = useRouter();
+  const { mutate } = useMutation({
+    mutationFn: postProject,
+  });
+
   const clickSubmitButton = () => {
-    console.log('submit');
+    mutate(uploadFormData, {
+      onSuccess: () => {
+        resetState();
+        router.replace(SERVICE_ROUTE.directory);
+      },
+    });
   };
 
   return (
