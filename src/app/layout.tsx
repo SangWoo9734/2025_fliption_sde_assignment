@@ -1,3 +1,4 @@
+import TanStackQueryProvider from '@/components/provider/TanstackQueryProvider';
 import type { Metadata } from 'next';
 import AppWrapper from '../components/layout/AppWrapper';
 import './globals.css';
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <AppWrapper>{children}</AppWrapper>
+        <TanStackQueryProvider>
+          <AppWrapper>{children}</AppWrapper>
+        </TanStackQueryProvider>
       </body>
     </html>
   );
