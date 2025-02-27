@@ -1,11 +1,14 @@
 'use client';
 
+import { FeedbackType } from '@/types/feedbackType';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 
-const FeedbackUnit = () => {
+const FeedbackUnit = ({ feedbackInfo }: { feedbackInfo: FeedbackType }) => {
   const [isOpen, setIsOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const { title, createdAt, status, category, contents } = feedbackInfo;
 
   return (
     <div className='border rounded-lg shadow-md bg-white'>
@@ -22,11 +25,13 @@ const FeedbackUnit = () => {
             className='rounded-md'
           />
           <div className='flex flex-col items-start'>
-            <h2 className='text-lg font-semibold'>Title</h2>
-            <p className='text-gray-500 text-sm'>2025.02.25</p>
+            <h2 className='text-lg font-semibold'>{title}</h2>
+            <p className='text-gray-500 text-sm'>
+              {new Date(createdAt).toDateString()}
+            </p>
           </div>
         </div>
-        <p className='text-green-600 font-medium'>Processed</p>
+        <p className='text-green-600 font-medium'>{status}</p>
         <span className='text-xl'>{isOpen ? '▲' : '▼'}</span>
       </button>
 
@@ -42,7 +47,7 @@ const FeedbackUnit = () => {
               What issue do you see?
             </label>
             <p className='border rounded-md bg-gray-100 p-2 mt-1 text-gray-800'>
-              Head size is too big/small
+              {category}
             </p>
           </div>
 
@@ -53,7 +58,7 @@ const FeedbackUnit = () => {
             <textarea
               className='w-full border-2 bg-gray-100 rounded-md p-2 mt-1 resize-none h-24 text-gray-800'
               readOnly
-              value='The head looks a bit larger compared to the body, and the alignment is slightly off.'
+              value={contents}
             />
           </div>
         </div>

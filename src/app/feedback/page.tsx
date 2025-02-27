@@ -1,12 +1,19 @@
+'use client';
+
 import ContentWrapper from '@/components/layout/ContentWrapper';
 import FeedbackUnit from '@/components/page/FeedbackPage/FeedbackUnit';
+import useGetFeedbacks from '@/hooks/useGetFeedbacks';
 
 const FeedbackPage = () => {
+  const { isLoading, feedbackList } = useGetFeedbacks();
+
+  if (isLoading) <div>isLoading</div>;
+
   return (
     <ContentWrapper>
       <div className='flex flex-col gap-4 overflow-scroll'>
-        {new Array(10).fill(0).map((_, index) => (
-          <FeedbackUnit key={index} />
+        {feedbackList.map((feedbackInfo, index) => (
+          <FeedbackUnit key={index} feedbackInfo={feedbackInfo} />
         ))}
       </div>
     </ContentWrapper>
