@@ -21,7 +21,9 @@ const ProjectCard = ({ projectInfo }: { projectInfo: ProjectType }) => {
           priority
         />
       </div>
-      <p className='font-bold '>{title}</p>
+      <p className='font-bold text-ellipsis whitespace-nowrap overflow-hidden'>
+        {title}
+      </p>
       <div className='flex justify-between items-center'>
         <p className='text-xs text-gray-500'>
           {new Date(updatedAt).toDateString()}
