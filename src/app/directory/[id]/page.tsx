@@ -40,7 +40,7 @@ const ProjectPage = () => {
 
   const clickFeedbackButton = () => {
     openModal({
-      contents: <FeedbackModal />,
+      contents: <FeedbackModal resultImageUrl={resultImageUrl} title={title} />,
     });
   };
 

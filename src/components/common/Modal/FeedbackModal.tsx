@@ -2,20 +2,34 @@ import useFeedbackForm from '@/hooks/useFeedbackForm';
 import Image from 'next/image';
 import Button from '../Button';
 
-const FeedbackModal = () => {
-  const { handleSubmit, feedbackCategoryRef, feedbackTextRef, closeModal } =
-    useFeedbackForm();
+const FeedbackModal = ({
+  resultImageUrl,
+  title,
+}: {
+  resultImageUrl: string;
+  title: string;
+}) => {
+  const {
+    handleSubmit,
+    projectImageRef,
+    feedbackTitleRef,
+    feedbackCategoryRef,
+    feedbackTextRef,
+    closeModal,
+  } = useFeedbackForm();
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
       <div className='flex gap-3 items-center text-lg font-bold'>
         <Image
-          src='/images/style3.png'
+          ref={projectImageRef}
+          src={resultImageUrl}
           alt='result image'
           width={80}
           height={100}
+          className='rounded-lg'
         />
-        <p>Title</p>
+        <p ref={feedbackTitleRef}>{title}</p>
       </div>
 
       <div>
